@@ -17,11 +17,10 @@ The **learning goals** for this project is:
 
 *The above general statement about project 2 can be removed once you are finished with your project. It is optional.
 
-## Project Title Lorem ipsum dolor sit amet
+## Travel application for New Yorkers during COVID-19
 Term: Fall 2020
 
-+ Team #
-+ **ProjecT title**: + Team members
++ Team #10
 	+ Charles Shin
 	+ Xinyi Zhang
 	+ Wei Yin
