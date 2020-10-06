@@ -1751,11 +1751,232 @@ summary {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KGx1YnJpZGF0ZSlcbmRmMjIgPC0gcmVhZF9jc3YoJy4uL2RhdGEvMDktMjItMjAyMC5jc3YnKVxuYGBgIn0= -->
+<pre class="r"><code>library(tidyverse)
+library(lubridate)
+df22 &lt;- read_csv(&#39;../data/09-22-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyMyA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yMy0yMDIwLmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>df23 &lt;- read_csv(&#39;../data/09-23-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyNCA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yNC0yMDIwLmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>df24 &lt;- read_csv(&#39;../data/09-24-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyNSA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yNS0yMDIwLmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>df25 &lt;- read_csv(&#39;../data/09-25-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyNiA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yNi0yMDIwLmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>df26 &lt;- read_csv(&#39;../data/09-26-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyNyA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yNy0yMDIwLmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>df27 &lt;- read_csv(&#39;../data/09-27-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyOCA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yOC0yMDIwLmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>df28 &lt;- read_csv(&#39;../data/09-28-2020.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBGSVBTID0gY29sX2RvdWJsZSgpLFxuICBBZG1pbjIgPSBjb2xfY2hhcmFjdGVyKCksXG4gIFByb3ZpbmNlX1N0YXRlID0gY29sX2NoYXJhY3RlcigpLFxuICBDb3VudHJ5X1JlZ2lvbiA9IGNvbF9jaGFyYWN0ZXIoKSxcbiAgTGFzdF9VcGRhdGUgPSBjb2xfZGF0ZXRpbWUoZm9ybWF0ID0gXCJcIiksXG4gIExhdCA9IGNvbF9kb3VibGUoKSxcbiAgTG9uZ18gPSBjb2xfZG91YmxlKCksXG4gIENvbmZpcm1lZCA9IGNvbF9kb3VibGUoKSxcbiAgRGVhdGhzID0gY29sX2RvdWJsZSgpLFxuICBSZWNvdmVyZWQgPSBjb2xfZG91YmxlKCksXG4gIEFjdGl2ZSA9IGNvbF9kb3VibGUoKSxcbiAgQ29tYmluZWRfS2V5ID0gY29sX2NoYXJhY3RlcigpLFxuICBJbmNpZGVuY2VfUmF0ZSA9IGNvbF9kb3VibGUoKSxcbiAgYENhc2UtRmF0YWxpdHlfUmF0aW9gID0gY29sX2RvdWJsZSgpXG4pXG4ifQ== -->
+<pre><code>Parsed with column specification:
+cols(
+  FIPS = col_double(),
+  Admin2 = col_character(),
+  Province_State = col_character(),
+  Country_Region = col_character(),
+  Last_Update = col_datetime(format = &quot;&quot;),
+  Lat = col_double(),
+  Long_ = col_double(),
+  Confirmed = col_double(),
+  Deaths = col_double(),
+  Recovered = col_double(),
+  Active = col_double(),
+  Combined_Key = col_character(),
+  Incidence_Rate = col_double(),
+  `Case-Fatality_Ratio` = col_double()
+)</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYyMiA8LSBkZjIyICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuZGYyMyA8LSBkZjIzICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuZGYyNCA8LSBkZjI0ICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuZGYyNSA8LSBkZjI1ICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuZGYyNiA8LSBkZjI2ICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuZGYyNyA8LSBkZjI3ICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuZGYyOCA8LSBkZjI4ICU+JVxuICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lXG4gIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lXG4gIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiVcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSlcblxuYGBgIn0= -->
+<pre class="r"><code>df22 &lt;- df22 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+
+df23 &lt;- df23 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+
+df24 &lt;- df24 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+
+df25 &lt;- df25 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+
+df26 &lt;- df26 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+
+df27 &lt;- df27 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+
+df28 &lt;- df28 %&gt;%
+  filter(Country_Region == &#39;US&#39;) %&gt;%
+  filter(Province_State %in% c(&#39;New York&#39;,&#39;New Jersey&#39;,&#39;Massachusetts&#39;,&#39;Virginia&#39;,&#39;Maryland&#39;,&#39;Pennsylvania&#39;,&#39;Connecticut&#39;,&#39;Delaware&#39;,&#39;Rhode Island&#39;,&#39;Washington DC&#39;,&#39;West Virginia&#39;))%&gt;%
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = format(Last_Update, &#39;%Y-%m-%d&#39;))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfdzQgPC0gcmJpbmQoZGYyMiwgZGYyMywgZGYyNCwgZGYyNSwgZGYyNiwgZGYyNywgZGYyOClcbmRmX3c0IDwtIGRmX3c0ICU+JSBcbiAgbXV0YXRlKExhc3RfVXBkYXRlID0gYXMuUE9TSVhjdChMYXN0X1VwZGF0ZSkpICU+JVxuICBtdXRhdGUoTGFzdF9VcGRhdGUgPSBMYXN0X1VwZGF0ZSAtIGRheXMoMSkpXG5gYGAifQ== -->
+<pre class="r"><code>df_w4 &lt;- rbind(df22, df23, df24, df25, df26, df27, df28)
+df_w4 &lt;- df_w4 %&gt;% 
+  mutate(Last_Update = as.POSIXct(Last_Update)) %&gt;%
+  mutate(Last_Update = Last_Update - days(1))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxud3JpdGVfY3N2KGRmX3c0LCAnLi4vb3V0cHV0L3dlZWs0LmNzdicpXG5gYGAifQ== -->
+<pre class="r"><code>write_csv(df_w4, &#39;../output/week4.csv&#39;)</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KcmVhZF9jc3YoJy4uLycpDQpgYGANCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQpgYGB7cn0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpkZjIyIDwtIHJlYWRfY3N2KCcuLi9kYXRhLzA5LTIyLTIwMjAuY3N2JykNCmRmMjMgPC0gcmVhZF9jc3YoJy4uL2RhdGEvMDktMjMtMjAyMC5jc3YnKQ0KZGYyNCA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yNC0yMDIwLmNzdicpDQpkZjI1IDwtIHJlYWRfY3N2KCcuLi9kYXRhLzA5LTI1LTIwMjAuY3N2JykNCmRmMjYgPC0gcmVhZF9jc3YoJy4uL2RhdGEvMDktMjYtMjAyMC5jc3YnKQ0KZGYyNyA8LSByZWFkX2NzdignLi4vZGF0YS8wOS0yNy0yMDIwLmNzdicpDQpkZjI4IDwtIHJlYWRfY3N2KCcuLi9kYXRhLzA5LTI4LTIwMjAuY3N2JykNCg0KYGBgDQoNCmBgYHtyfQ0KZGYyMiA8LSBkZjIyICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KZGYyMyA8LSBkZjIzICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KZGYyNCA8LSBkZjI0ICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KZGYyNSA8LSBkZjI1ICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KZGYyNiA8LSBkZjI2ICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KZGYyNyA8LSBkZjI3ICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KZGYyOCA8LSBkZjI4ICU+JQ0KICBmaWx0ZXIoQ291bnRyeV9SZWdpb24gPT0gJ1VTJykgJT4lDQogIGZpbHRlcihQcm92aW5jZV9TdGF0ZSAlaW4lIGMoJ05ldyBZb3JrJywnTmV3IEplcnNleScsJ01hc3NhY2h1c2V0dHMnLCdWaXJnaW5pYScsJ01hcnlsYW5kJywnUGVubnN5bHZhbmlhJywnQ29ubmVjdGljdXQnLCdEZWxhd2FyZScsJ1Job2RlIElzbGFuZCcsJ1dhc2hpbmd0b24gREMnLCdXZXN0IFZpcmdpbmlhJykpJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IGFzLlBPU0lYY3QoTGFzdF9VcGRhdGUpKSAlPiUNCiAgbXV0YXRlKExhc3RfVXBkYXRlID0gZm9ybWF0KExhc3RfVXBkYXRlLCAnJVktJW0tJWQnKSkNCg0KYGBgDQoNCg0KYGBge3J9DQpkZl93NCA8LSByYmluZChkZjIyLCBkZjIzLCBkZjI0LCBkZjI1LCBkZjI2LCBkZjI3LCBkZjI4KQ0KZGZfdzQgPC0gZGZfdzQgJT4lIA0KICBtdXRhdGUoTGFzdF9VcGRhdGUgPSBhcy5QT1NJWGN0KExhc3RfVXBkYXRlKSkgJT4lDQogIG11dGF0ZShMYXN0X1VwZGF0ZSA9IExhc3RfVXBkYXRlIC0gZGF5cygxKSkNCmBgYA0KDQpgYGB7cn0NCndyaXRlX2NzdihkZl93NCwgJy4uL291dHB1dC93ZWVrNC5jc3YnKQ0KYGBgDQoNCg==</div>
 
 
 
