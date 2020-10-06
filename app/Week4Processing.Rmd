@@ -66,10 +66,12 @@ df28 <- df28 %>%
 df_w4 <- rbind(df22, df23, df24, df25, df26, df27, df28)
 df_w4 <- df_w4 %>% 
   mutate(Last_Update = as.POSIXct(Last_Update)) %>%
-  mutate(Last_Update = Last_Update - days(1))
+  mutate(Last_Update = Last_Update - days(1)) %>%
+  mutate(Last_Update = format(Last_Update, '%Y-%m-%d'))
 ```
 
 ```{r}
+df_w4
 write_csv(df_w4, '../output/week4.csv')
 ```
 
