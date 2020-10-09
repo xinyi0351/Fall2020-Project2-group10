@@ -22,8 +22,10 @@ rgdal_show_exportToProj4_warnings = "none"
 library(rgdal)
 options(tigris_use_cache = TRUE)
 library(tigris)
+library(RCurl)
 
-allstate <- read_csv("D:/Columbia University/GR 5243/Project 1/Fall2020-Project2-group10/output/allstate.csv")
+rawfile <- "https://raw.githubusercontent.com/zlj-0131/Data/main/allstate.csv"
+allstate <- read_csv(rawfile)
 
 states <- 
     geojson_read( 
