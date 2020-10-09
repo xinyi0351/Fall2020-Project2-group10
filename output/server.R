@@ -254,7 +254,7 @@ shinyServer(function(input, output) {
                         direction = "auto"))
             m5
             
-        } else if (input1 == "Confirmed") {
+        } else if (input1 == "Recovered") {
             
             us5 <- allstate %>%
                 filter(Admin2 != 'Unassigned') %>%
