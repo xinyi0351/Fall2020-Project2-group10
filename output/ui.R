@@ -36,7 +36,12 @@ ui <- dashboardPage(
                                 label = 'Please select an item',
                                 choices = c('Confirmed','Deaths','Recovered','Active','Incidence Rate','Case Fatality Ratio')
                     ),
-                fluidRow(box(width = "100%", leafletOutput(outputId = 'm0')))
+                    sliderInput("DatesMerge",
+                                "Dates:",
+                                min = as.Date("2020-09-01", "%Y-%m-%d"),
+                                max = as.Date("2020-10-04", "%Y-%m-%d"),
+                                value = as.Date("2020-10-04"), timeFormat="%Y-%m-%d"),
+                    fluidRow(box(width = "100%", leafletOutput(outputId = 'm0')))
             )),
             tabItem(
                 tabName = 'choro', 

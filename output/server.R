@@ -38,19 +38,22 @@ states <-
 shinyServer(function(input, output) {
     output$m0 <- renderLeaflet({
         input1 <- input$data
+        input2 <- input$DatesMerge
         
         if (input1 == "Incidence Rate"){
             
             us <- allstate %>%
-                filter(Admin2 != 'Unassigned') %>%
+                filter(is.na(Incidence_Rate) == FALSE) %>%
+                filter(Last_Update <= input2) %>%
                 group_by(Province_State) %>%
-                mutate(sum_incidence_rate = sum(Incidence_Rate))
+                mutate(sum_incidence_rate = sum(Incidence_Rate)) 
             
             states_us <- geo_join(states, us, "name", "Province_State")
             
             
             bins <- c(0, 100000, 200000, 500000, 1000000, 2000000, 5000000, 10000000, Inf)
             pal <- colorBin("YlOrRd", domain = states_us$sum_incidence_rate, bins = bins)
+            
             
             labels <- sprintf(
                 "<strong>%s</strong><br/>%g",
@@ -84,7 +87,8 @@ shinyServer(function(input, output) {
         } else if (input1 == "Confirmed") {
             
             us1 <- allstate %>%
-                filter(Admin2 != 'Unassigned') %>%
+                filter(is.na(Incidence_Rate) == FALSE) %>%
+                filter(Last_Update <= input2) %>%
                 group_by(Province_State) %>%
                 mutate(sum_confirmed = sum(Confirmed))
             
@@ -127,7 +131,8 @@ shinyServer(function(input, output) {
         } else if (input1 == "Deaths") {
             
             us2 <- allstate %>%
-                filter(Admin2 != 'Unassigned') %>%
+                filter(is.na(Incidence_Rate) == FALSE) %>%
+                filter(Last_Update <= input2) %>%
                 group_by(Province_State) %>%
                 mutate(sum_deaths = sum(Deaths))
             
@@ -170,7 +175,8 @@ shinyServer(function(input, output) {
         } else if (input1 == "Active") {
             
             us3 <- allstate %>%
-                filter(Admin2 != 'Unassigned') %>%
+                filter(is.na(Incidence_Rate) == FALSE) %>%
+                filter(Last_Update <= input2) %>%
                 group_by(Province_State) %>%
                 mutate(sum_active = sum(Active))
             
@@ -214,7 +220,8 @@ shinyServer(function(input, output) {
         } else if (input1 == "Case Fatality Ratio") {
             
             us4 <- allstate %>%
-                filter(Admin2 != 'Unassigned') %>%
+                filter(is.na(Incidence_Rate) == FALSE) %>%
+                filter(Last_Update <= input2) %>%
                 group_by(Province_State) %>%
                 mutate(fatality_ratio = sum(Deaths)/sum(Confirmed))
             
@@ -257,7 +264,8 @@ shinyServer(function(input, output) {
         } else if (input1 == "Recovered") {
             
             us5 <- allstate %>%
-                filter(Admin2 != 'Unassigned') %>%
+                filter(is.na(Incidence_Rate) == FALSE) %>%
+                filter(Last_Update <= input2) %>%
                 group_by(Province_State) %>%
                 mutate(sum_recoverd = sum(Recovered))
             
