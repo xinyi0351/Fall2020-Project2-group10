@@ -23,7 +23,7 @@ library(rgdal)
 options(tigris_use_cache = TRUE)
 library(tigris)
 library(RCurl)
-
+source("global.R") 
 rawfile <- "https://raw.githubusercontent.com/zlj-0131/Data/main/allstate.csv"
 allstate <- read_csv(rawfile)
 
