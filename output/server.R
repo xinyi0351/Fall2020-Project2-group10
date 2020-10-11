@@ -377,8 +377,9 @@ shinyServer(function(input, output) {
         countylevelmap(fo())
     )
     output$destable <- DT::renderDataTable(
-        DT::datatable(attraction[attraction$province_state == tolower(fo())
-                                 ,])
+        DT::datatable(attraction[attraction$province_state == tolower(fo()),][,1:7],
+                      options = list( pageLength = 3),
+                      colnames = c('Desitination','State','County','Latitude','Longitude','Label','Source'))
     )
 
 })
