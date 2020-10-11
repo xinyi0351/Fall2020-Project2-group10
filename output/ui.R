@@ -51,7 +51,24 @@ ui <- dashboardPage(
                     selectInput('pro',
                                 label = 'Please select a state',
                                 choices = c('Connecticut','Delaware','Maryland','Massachusetts','New Jersey','New York','Pennsylvania','Rhode Island','Virginia','Washington DC','West Virginia'))
-                )
+                ),
+                sidebarPanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
+                             top = 300, left = 20, right = "auto", bottom = "auto", width = 250, height = "auto",
+                             selectInput('choices','Which data to visualize:',
+                                         choices = c('New York','New Jersey','Massachusetts','Virginia',
+                                                     'Maryland','Pennsylvania','Connecticut','Delaware',
+                                                     'Rhode Island','West Virginia'),
+                                         selected = c('New York')),
+                             sliderInput('date_map','Input Date:',
+                                         #first day of data recording
+                                         min = as.Date(date_choices[1]),
+                                         #present day of data recording
+                                         max = as.Date(tail(date_choices,1)),
+                                         value = as.Date('2020-09-01','%Y-%m-%d'),
+                                         timeFormat = "%Y-%m-%d",
+                                         animate = TRUE, step = 1),
+                             style = "opacity: 0.80"),
+                leafletOutput('map')
             ),
             tabItem(
                 tabName = 'desitination',

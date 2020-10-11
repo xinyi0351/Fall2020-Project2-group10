@@ -23,6 +23,8 @@ library(rgdal)
 options(tigris_use_cache = TRUE)
 library(tigris)
 library(RCurl)
+
+
 source("global.R") 
 rawfile <- "https://raw.githubusercontent.com/zlj-0131/Data/main/allstate.csv"
 allstate <- read_csv(rawfile)
@@ -305,6 +307,68 @@ shinyServer(function(input, output) {
                         direction = "auto"))
             m6
         }
+    }) 
+#----------------------------------------------------------------------------------# First Page end Here
+    covid_by_date <- covid %>% 
+        filter(Last_Update == format.Date("2020-09-01", '%Y-%m-%d'))
+    pal <- colorBin("Greens", NULL, bins = 5)
+    output$map <- renderLeaflet({
+        country_popup <- paste0("<strong>County: </strong>",
+                                covid_by_date$NAME,
+                                "<br><strong>",
+                                "Incidence Rate: ",
+                                covid_by_date$Incidence_Rate,
+                                "<br><strong>")
+        attraction_pop <- paste0("<strong>Name: </strong>",
+                                 att$Name,
+                                 "<br><strong>",
+                                 "Type: ",
+                                 att$Label,
+                                 "<br><strong>")
+        leaflet(covid_by_date) %>%
+            addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 6, maxZoom = 10)) %>%
+            setView(lat = 40.75042, lng = -73.98928, 10) %>%
+            addPolygons(
+                fillColor = ~pal(covid_by_date$Incidence_Rate),
+                fillOpacity = 0.6,
+                weight = 2,
+                color = "white",
+                popup = country_popup
+            ) %>%
+            addMarkers(lat = long, lng = lati, popup= attraction_pop)
     })
+    
+    
+    
+    observe({
+        if(!is.null(input$date_map)){
+            select_date <- format.Date(input$date_map,'%Y-%m-%d')
+        }
+        covid_by_date <- covid %>% 
+            filter(Last_Update == input$date_map) 
+        country_popup <- paste0("<strong>County: </strong>",
+                                covid_by_date$NAME,
+                                "<br><strong>",
+                                "Incidence Rate: ",
+                                covid_by_date$Incidence_Rate,
+                                "<br><strong>")
+        attraction_pop <- paste0("<strong>Name: </strong>",
+                                 att$Name,
+                                 "<br><strong>",
+                                 "Type: ",
+                                 att$Label,
+                                 "<br><strong>")
+        leafletProxy("map", data = covid_by_date) %>%
+            addPolygons(
+                fillColor = ~pal(covid_by_date$Incidence_Rate),
+                fillOpacity = 0.6,
+                weight = 2,
+                color ="white",
+                popup = country_popup,
+                layerId = ~NAME
+            ) %>%
+            addMarkers(lat = long, lng = lati, popup= attraction_pop)
+    })
+#--------------------------------------------------------------------------------------# Second Page Ends Here
 })
 
