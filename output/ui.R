@@ -29,8 +29,9 @@ ui <- dashboardPage(
         tabItems(
             tabItem(
                 tabName = 'covidmap',
-                tags$h3('This would be a nationwide overview on how the epidemic spreading. With a side bar providing options of indice for users to choose. And perhaps a time slider to show time series data.'),
-                tags$h4('Interactive cluster map with popups show detailed numbers. Zoom in to check on details'),
+                tags$h1('COVID trend'),
+                tags$h4('A nationwide overview on how the epidemic spreading. Discover how will the different indices change over the latest month. 
+                        Slide the time bar to discover the trends.'),
                 sidebarPanel( width = "100%",
                     selectInput('data',
                                 label = 'Please select an item',
@@ -45,8 +46,9 @@ ui <- dashboardPage(
             )),
             tabItem(
                 tabName = 'choro', 
-                tags$h3('This will be a choropleth map with different colors representing the number of cases within that area. With a side bar for users to choose a specific state to show.'),
-                tags$h4('Interactive choropleth map with popups showing nearest tourist attractions.'),
+                tags$h1('Where do you want to visit'),
+                tags$h3('How does indecident rates in each county changes? Select on time scale and distance scale'),
+                tags$h3('Check out the trend of covid-cases and make your decision!')
                 #sidebarPanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
                 # top = 300, left = 20, right = "auto", bottom = "auto", width = 100, height = "auto",
                 # selectInput('choices','Which data to visualize:',
