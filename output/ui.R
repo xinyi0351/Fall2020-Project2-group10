@@ -22,7 +22,7 @@ ui <- dashboardPage(
             menuItem(tags$embed('Overview'),icon = icon('virus'),tabName = 'covidmap'),
             menuItem(tags$em('Choropleths'),icon = icon('head-side-mask'),tabName = 'choro'),
             #menuItem(tags$em('clustermap'),icon = icon('lungs'),tabName = 'cluster'),
-            menuItem(tags$em('Popular destinations'),icon = icon('lightbulb'),tabName = 'destination')
+            menuItem(tags$em('Find your destinations'),icon = icon('lightbulb'),tabName = 'destination')
         )
     ),
     dashboardBody(
@@ -70,20 +70,26 @@ ui <- dashboardPage(
                              style = "opacity: 0.80"),
                 leafletOutput('map')
             ),
+            
+            # function here: Explore by states
             tabItem(
-                tabName = 'desitination',
-                tags$h3('Destinations travelers love'),
-                tags$h4('Tables / Maps filtering by entered distance or category'),
+                tabName = 'destination',
+                tags$h1('Destinations travelers love'),
+                tags$h3('Choose the state you want to explore! Check the detail in the table.'),
                 sidebarPanel(
-                    selectInput('distance',
-                                label = 'Please select a distance',
-                                choices = c('<10 miles','10-20 miles','etc'))
+                    selectInput('States',
+                                label = 'Please select a states',
+                                choices = c('New York','New Jersey','Massachusetts','Virginia',
+                                            'Maryland','Pennsylvania','Connecticut','Delaware',
+                                            'Rhode Island','West Virginia'))
+                ),
+                mainPanel(
+                    leafletOutput(outputId = 'desty'),
+                    DT::dataTableOutput(outputId = 'destable')
                 )
             )
             
         ),
-        #fluidRow(box(width = 12, leafletOutput(outputId = 'mymap'))),
-        #fluidRow(box(width = 12, dataTableOutput(outputId = 'summary_table')))
     )
     )
 

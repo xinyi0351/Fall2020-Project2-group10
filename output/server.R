@@ -369,6 +369,17 @@ shinyServer(function(input, output) {
             ) %>%
             addMarkers(lat = long, lng = lati, popup= attraction_pop)
     })
-#--------------------------------------------------------------------------------------# Second Page Ends Here
+    #--------------------------------------------------------------------------------------# Second Page Ends Here
+    fo <- reactive(
+        temp <- input$States
+        )
+    output$desty <- renderLeaflet(
+        countylevelmap(fo())
+    )
+    output$destable <- DT::renderDataTable(
+        DT::datatable(attraction[attraction$province_state == tolower(fo())
+                                 ,])
+    )
+
 })
 

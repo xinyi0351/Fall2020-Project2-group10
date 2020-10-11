@@ -1,5 +1,5 @@
 Name,State,County,Longitude (N/S),Latitude (E/W),Label,Source,Notes
-Farmington River Trail,Connecticut,Hartford,41.731227,72.863284,Hiking,"https://www.tripadvisor.com/Attractions-g28928-Activities-Connecticut.html Note: for all Tripadvisor sources, I scrolled to the bottom of the page and selected Sort by: Traveler Favorites (these rankings are based on Tripadvisor data including reviews, ratings, photos, and popularity)","I decided to omit #5 Merritt Parkway (because it's a scenic highway), #6 Farmington River (because it's covered by Farmington River Trail), and #7 Yale University Art Gallery (because it's covered by Yale University) from the Tripadvisor rankings"
+Farmington River Trail,Connecticut,Hartford,41.731227,72.863284,Trail,"https://www.tripadvisor.com/Attractions-g28928-Activities-Connecticut.html Note: for all Tripadvisor sources, I scrolled to the bottom of the page and selected Sort by: Traveler Favorites (these rankings are based on Tripadvisor data including reviews, ratings, photos, and popularity)","I decided to omit #5 Merritt Parkway (because it's a scenic highway), #6 Farmington River (because it's covered by Farmington River Trail), and #7 Yale University Art Gallery (because it's covered by Yale University) from the Tripadvisor rankings"
 Mystic Seaport Museum,Connecticut,New London,41.3616,71.9646,Museum,,
 Yale University,Connecticut,New Haven,41.3163,72.9223,University,,
 The Mark Twain House & Museum,Connecticut,Hartford,41.767,72.7014,Museum,,
@@ -7,9 +7,9 @@ Mashantucket Pequot Museum & Research Center,Connecticut,New London,41.4662,71.9
 Go Ape Zipline & Adventure Park,Delaware,New Castle,39.33535,75.43296,Amusement Park,https://www.tripadvisor.com/Attractions-g28929-Activities-Delaware.html,
 Funland,Delaware,Sussex,38.7146,75.0762,Amusement Park,,
 Air Mobility Command Museum,Delaware,Kent,39.1187,75.4566,Museum,,
-Junction and Breakwater Trail,Delaware,Sussex,38.43284,75.05442,Hiking,,
+Junction and Breakwater Trail,Delaware,Sussex,38.43284,75.05442,Trail,,
 Hagley Museum and Library,Delaware,New Castle,39.465,75.343,Museum,,
-Fenway Park,Massachusetts,Suffolk,42.3467,71.0972,Stadium,https://www.tripadvisor.com/Attractions-g28942-Activities-Massachusetts.html#ATTRACTION_SORT_WRAPPER,
+Fenway Park,Massachusetts,Suffolk,42.3467,71.0972,Arenas & Stadiums,https://www.tripadvisor.com/Attractions-g28942-Activities-Massachusetts.html#ATTRACTION_SORT_WRAPPER,
 Freedom Trail,Massachusetts,Suffolk,42.356,71.0541,Trail,,
 Atwood Museum,Massachusetts,Barnstable,41.673274,69.965237,Museum,,
 Lizzie Borden House,Massachusetts,Bristol,41.6989,71.1562,Museum,,
@@ -39,7 +39,7 @@ The Breakers,Rhode Island,Newport,41.470089,71.298249,Museum,https://www.tripadv
 Roger Williams Park Zoo,Rhode Island,Providence,41.784178,71.417049,Zoo,,
 Rhode Island School of Design Museum of Art,Rhode Island,Providence,41.826703,71.407616,Museum,,
 Narragansett Beach,Rhode Island,Washington,41.43594,71.455802,Beach,,
-Rhode Island State House,Rhode Island,Providence,41.831161,71.4149,Building,,
+Rhode Island State House,Rhode Island,Providence,41.831161,71.4149,Landmark,,
 Colonial Williamsburg,Virginia,James City,37.279369,76.698116,Landmark,https://www.tripadvisor.com/Attractions-g28967-Activities-Virginia.html,"
 "
 Rocking S Ranch,Virginia,Winchester-Frederick,39.312565,78.185588,Ranch,,
@@ -48,7 +48,7 @@ Tarnished Truth Distilling Company,Virginia,Virginia Beach,36.869427,75.983645,W
 Grayson Highlands State Park,Virginia,Grayson,36.621106,81.484437,Park,,
 Smithsonian National Museum of Natural History,Washington DC,Washington DC,38.8913,77.0261,Museum,https://www.tripadvisor.com/Attractions-g28970-Activities-Washington_DC_District_of_Columbia.html,
 National Museum of African American History and Culture,Washington DC,Washington DC,38.8911,77.0326,Museum,,
-US Capitol,Washington DC,Washington DC,38.8899,77.0091,Government Building,,
+US Capitol,Washington DC,Washington DC,38.8899,77.0091,Landmark,,
 Lincoln Memorial,Washington DC,Washington DC,38.8893,77.0502,Monument,,
 National Gallery of Art,Washington DC,Washington DC,38.8913,77.02,Museum,,
 New River Gorge,West Virginia,Summers,37.917987,81.024166,Park,https://www.tripadvisor.com/Attractions-g28971-Activities-West_Virginia.html,
