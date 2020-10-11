@@ -47,28 +47,31 @@ ui <- dashboardPage(
                 tabName = 'choro', 
                 tags$h3('This will be a choropleth map with different colors representing the number of cases within that area. With a side bar for users to choose a specific state to show.'),
                 tags$h4('Interactive choropleth map with popups showing nearest tourist attractions.'),
-                sidebarPanel(
-                    selectInput('pro',
-                                label = 'Please select a state',
-                                choices = c('Connecticut','Delaware','Maryland','Massachusetts','New Jersey','New York','Pennsylvania','Rhode Island','Virginia','Washington DC','West Virginia'))
-                ),
-                sidebarPanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
-                             top = 300, left = 20, right = "auto", bottom = "auto", width = 250, height = "auto",
-                             selectInput('choices','Which data to visualize:',
-                                         choices = c('New York','New Jersey','Massachusetts','Virginia',
-                                                     'Maryland','Pennsylvania','Connecticut','Delaware',
-                                                     'Rhode Island','West Virginia'),
-                                         selected = c('New York')),
-                             sliderInput('date_map','Input Date:',
-                                         #first day of data recording
-                                         min = as.Date(date_choices[1]),
-                                         #present day of data recording
-                                         max = as.Date(tail(date_choices,1)),
-                                         value = as.Date('2020-09-01','%Y-%m-%d'),
-                                         timeFormat = "%Y-%m-%d",
-                                         animate = TRUE, step = 1),
-                             style = "opacity: 0.80"),
-                leafletOutput('map')
+                leafletOutput("map", width = "80%", height = "800"),
+                #sidebarPanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
+                # top = 300, left = 20, right = "auto", bottom = "auto", width = 100, height = "auto",
+                # selectInput('choices','Which data to visualize:',
+                #             choices = c('New York','New Jersey','Massachusetts','Virginia',
+                #                         'Maryland','Pennsylvania','Connecticut','Delaware',
+                #                         'Rhode Island','West Virginia'),
+                #             selected = c('New York')),
+                absolutePanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
+                              top = 60, left = "auto", right = 20, bottom = "auto", width = 330, height = "auto",
+                              sliderInput('date_map','Input Date:',
+                                          #first day of data recording
+                                          min = as.Date(date_choices[1]),
+                                          #present day of data recording
+                                          max = as.Date(tail(date_choices,1)),
+                                          value = as.Date('2020-09-01','%Y-%m-%d'),
+                                          timeFormat = "%Y-%m-%d",
+                                          animate = TRUE, step = 1),
+                              sliderInput('distance_map', 'Distance From New York: (Miles)',
+                                          min = 0,
+                                          max = round(max(att$distance), -2),
+                                          value = 500,
+                                          animate = FALSE,
+                                          step = 10),
+                              style = "opacity: 0.80")
             ),
             
             # function here: Explore by states
