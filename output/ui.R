@@ -47,7 +47,6 @@ ui <- dashboardPage(
                 tabName = 'choro', 
                 tags$h3('This will be a choropleth map with different colors representing the number of cases within that area. With a side bar for users to choose a specific state to show.'),
                 tags$h4('Interactive choropleth map with popups showing nearest tourist attractions.'),
-                leafletOutput("map", width = "80%", height = "800"),
                 #sidebarPanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
                 # top = 300, left = 20, right = "auto", bottom = "auto", width = 100, height = "auto",
                 # selectInput('choices','Which data to visualize:',
@@ -55,8 +54,7 @@ ui <- dashboardPage(
                 #                         'Maryland','Pennsylvania','Connecticut','Delaware',
                 #                         'Rhode Island','West Virginia'),
                 #             selected = c('New York')),
-                absolutePanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
-                              top = 60, left = "auto", right = 20, bottom = "auto", width = 330, height = "auto",
+                sidebarPanel(id = "control",
                               sliderInput('date_map','Input Date:',
                                           #first day of data recording
                                           min = as.Date(date_choices[1]),
@@ -71,7 +69,10 @@ ui <- dashboardPage(
                                           value = 500,
                                           animate = FALSE,
                                           step = 10),
-                              style = "opacity: 0.80")
+                              style = "opacity: 0.80"),
+                mainPanel(
+                    leafletOutput("map", width = "80%", height = "800"),
+                )
             ),
             
             # function here: Explore by states
