@@ -311,7 +311,9 @@ shinyServer(function(input, output) {
 #----------------------------------------------------------------------------------# First Page end Here
     covid_by_date <- covid %>% 
         filter(Last_Update == format.Date("2020-09-01", '%Y-%m-%d'))
-    pal <- colorBin("Greens", NULL, bins = 5)
+    pal <- colorBin("Greens", NULL, bins = 8)
+    att_by_dist <- att %>%
+        filter(distance <= 500)
     output$map <- renderLeaflet({
         country_popup <- paste0("<strong>County: </strong>",
                                 covid_by_date$NAME,
@@ -320,22 +322,35 @@ shinyServer(function(input, output) {
                                 covid_by_date$Incidence_Rate,
                                 "<br><strong>")
         attraction_pop <- paste0("<strong>Name: </strong>",
-                                 att$Name,
+                                 att_by_dist$Name,
                                  "<br><strong>",
-                                 "Type: ",
-                                 att$Label,
-                                 "<br><strong>")
+                                 "Type: </strong>",
+                                 att_by_dist$Label,
+                                 "<br>",
+                                 "Distance to New York: ",
+                                 round(att_by_dist$distance),
+                                 " miles")
+        leafIcons <- icons(
+            iconUrl = ifelse(att_by_dist$Label %in% c('University','Landmark','Monument','Museum','Theater'),'https://www.flaticon.com/svg/static/icons/svg/3581/3581154.svg',
+                             ifelse(att_by_dist$Label %in% c('Hiking','Trail'),'https://www.flaticon.com/svg/static/icons/svg/3373/3373903.svg',
+                                    ifelse(att_by_dist$Label %in% c("Amusement Park","National Park","Park"),'https://www.flaticon.com/svg/static/icons/svg/2510/2510287.svg',
+                                           ifelse(att_by_dist$Label %in% c('Boat Tour','Beach'), 'https://www.flaticon.com/svg/static/icons/svg/1175/1175010.svg',
+                                                  ifelse(att_by_dist$Label %in% c('Wineries','Casino'), 'https://www.flaticon.com/svg/static/icons/svg/1432/1432256.svg',
+                                                         ifelse(att_by_dist$Label == "Arenas & Stadiums", 'flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
+                                                  ))))),
+            iconWidth = 38, iconHeight = 40, shadowWidth = 10, shadowHeight = 10)
+        
         leaflet(covid_by_date) %>%
-            addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 6, maxZoom = 10)) %>%
+            addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 4, maxZoom = 10)) %>%
             setView(lat = 40.75042, lng = -73.98928, 10) %>%
             addPolygons(
+                layerId = ~NAME,
                 fillColor = ~pal(covid_by_date$Incidence_Rate),
                 fillOpacity = 0.6,
                 weight = 2,
                 color = "white",
-                popup = country_popup
-            ) %>%
-            addMarkers(lat = long, lng = lati, popup= attraction_pop)
+                popup = country_popup) %>%
+            addMarkers(data = att_by_dist, lat = att_by_dist$Lat, lng = att_by_dist$Lng, popup= attraction_pop, icon = leafIcons, label = ~Name, group = "one")
     })
     
     
@@ -344,30 +359,67 @@ shinyServer(function(input, output) {
         if(!is.null(input$date_map)){
             select_date <- format.Date(input$date_map,'%Y-%m-%d')
         }
-        covid_by_date <- covid %>% 
-            filter(Last_Update == input$date_map) 
-        country_popup <- paste0("<strong>County: </strong>",
-                                covid_by_date$NAME,
-                                "<br><strong>",
-                                "Incidence Rate: ",
-                                covid_by_date$Incidence_Rate,
-                                "<br><strong>")
-        attraction_pop <- paste0("<strong>Name: </strong>",
-                                 att$Name,
-                                 "<br><strong>",
-                                 "Type: ",
-                                 att$Label,
-                                 "<br><strong>")
-        leafletProxy("map", data = covid_by_date) %>%
-            addPolygons(
-                fillColor = ~pal(covid_by_date$Incidence_Rate),
-                fillOpacity = 0.6,
-                weight = 2,
-                color ="white",
-                popup = country_popup,
-                layerId = ~NAME
-            ) %>%
-            addMarkers(lat = long, lng = lati, popup= attraction_pop)
+        if (input$distance_map == 0){
+            covid_by_date <- covid %>%
+                filter(Last_Update == input$date_map)
+            country_popup <- paste0("<strong>County: </strong>",
+                                    covid_by_date$NAME,
+                                    "<br><strong>",
+                                    "Incidence Rate: ",
+                                    covid_by_date$Incidence_Rate,
+                                    "<br><strong>")
+            leafletProxy("map", data = covid_by_date) %>%
+                addPolygons(
+                    fillColor = ~pal(covid_by_date$Incidence_Rate),
+                    fillOpacity = 0.6,
+                    weight = 2,
+                    color ="white",
+                    popup = country_popup,
+                    layerId = ~NAME
+                ) %>% 
+                clearGroup(group = "one")
+        }
+        else{
+            covid_by_date <- covid %>%
+                filter(Last_Update == input$date_map)
+            att_by_dist <- att %>%
+                filter(distance <= input$distance_map)
+            country_popup <- paste0("<strong>County: </strong>",
+                                    covid_by_date$NAME,
+                                    "<br><strong>",
+                                    "Incidence Rate: ",
+                                    covid_by_date$Incidence_Rate,
+                                    "<br><strong>")
+            attraction_pop <- paste0("<strong>Name: </strong>",
+                                     att_by_dist$Name,
+                                     "<br><strong>",
+                                     "Type: </strong>",
+                                     att_by_dist$Label,
+                                     "<br>",
+                                     "Distance to New York: ",
+                                     round(att_by_dist$distance),
+                                     " miles")
+            leafIcons <- icons(
+                iconUrl = ifelse(att_by_dist$Label %in% c('University','Landmark','Monument','Museum','Theater'),'https://www.flaticon.com/svg/static/icons/svg/3581/3581154.svg',
+                                 ifelse(att_by_dist$Label %in% c('Hiking','Trail'),'https://www.flaticon.com/svg/static/icons/svg/3373/3373903.svg',
+                                        ifelse(att_by_dist$Label %in% c("Amusement Park","National Park","Park"),'https://www.flaticon.com/svg/static/icons/svg/2510/2510287.svg',
+                                               ifelse(att_by_dist$Label %in% c('Boat Tour','Beach'), 'https://www.flaticon.com/svg/static/icons/svg/1175/1175010.svg',
+                                                      ifelse(att_by_dist$Label %in% c('Wineries','Casino'), 'https://www.flaticon.com/svg/static/icons/svg/1432/1432256.svg',
+                                                             ifelse(att_by_dist$Label == "Arenas & Stadiums", 'flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
+                                                      ))))),
+                iconWidth = 38, iconHeight = 40, shadowWidth = 10, shadowHeight = 10)
+            leafletProxy("map", data = covid_by_date) %>%
+                addPolygons(
+                    fillColor = ~pal(covid_by_date$Incidence_Rate),
+                    fillOpacity = 0.6,
+                    weight = 2,
+                    color ="white",
+                    popup = country_popup,
+                    layerId = ~NAME
+                ) %>% 
+                clearGroup(group = "one") %>%
+                addMarkers(data = att_by_dist, lat = ~Lat, lng = ~Lng, popup= attraction_pop, icon = leafIcons, label = ~Name, group = "one")
+        }
     })
     #--------------------------------------------------------------------------------------# Second Page Ends Here
     fo <- reactive(
