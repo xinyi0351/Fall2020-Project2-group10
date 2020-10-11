@@ -67,3 +67,37 @@ if (!require("sp")) {
   install.packages("sp")
   library(sp)
 }
+
+
+covid <- read_csv('covid_cleaned.csv')
+att <- read_csv('Project 2 State Attractions.csv')
+covid <-  covid %>%
+  filter(!is.na(Long_)) %>%
+  filter(!is.na(Lat)) %>%
+  filter(!is.na(Incidence_Rate)) %>%
+  filter(Admin2 != 'Unassigned')
+
+date_choices <- as.Date(covid$Last_Update,format = 'X%m.%d.%y')
+
+geo_try <- counties(c('New York','New Jersey','Massachusetts','Virginia',
+                      'Maryland','Pennsylvania','Connecticut','Delaware',
+                      'Rhode Island','West Virginia'), cb =TRUE)
+
+#geo_try_2 <- merge(geo_try, covid, by.x = "NAME", by.y = "Province_State")
+
+geo_try_2 <- geo_join(geo_try, covid, "NAME", "Admin2")
+
+
+covid <- merge(geo_try,
+               covid,
+               by.x = 'NAME',
+               by.y = 'Admin2',sort = FALSE)
+
+state <- tigris::states() %>% filter(NAME %in% c('New York','New Jersey','Massachusetts','Virginia',
+                                                 'Maryland','Pennsylvania','Connecticut','Delaware',
+                                                 'Rhode Island','West Virginia'))
+
+
+randomData <- rnorm(n=nrow(geo_try_2), 150, 30)
+long <- att$`Longitude (N/S)`
+lati <- -att$`Latitude (E/W)`
