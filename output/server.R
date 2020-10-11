@@ -308,7 +308,55 @@ shinyServer(function(input, output) {
             m6
         }
     }) 
-    # --------------------------------# First Page end Here
+#----------------------------------------------------------------------------------# First Page end Here
+    covid_by_date <- covid %>% 
+        filter(Last_Update == format.Date("2020-09-01", '%Y-%m-%d'))
+    pal <- colorBin("Greens", NULL, bins = 5)
+    output$map <- renderLeaflet({
+        country_popup <- paste0("<strong>Country: </strong>",
+                                covid_by_date$NAME,
+                                "<br><strong>",
+                                "Total Cases: ",
+                                covid_by_date$Incidence_Rate,
+                                "<br><strong>")
+        leaflet(covid_by_date) %>%
+            addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 6, maxZoom = 10)) %>%
+            setView(lat = 40.75042, lng = -73.98928, 10) %>%
+            addPolygons(
+                fillColor = ~pal(covid_by_date$Incidence_Rate),
+                fillOpacity = 0.6,
+                weight = 2,
+                color = "white",
+                popup = country_popup
+            ) %>%
+            addMarkers(lat = long, lng = lati)
+    })
     
+    
+    
+    observe({
+        if(!is.null(input$date_map)){
+            select_date <- format.Date(input$date_map,'%Y-%m-%d')
+        }
+        covid_by_date <- covid %>% 
+            filter(Last_Update == input$date_map) 
+        print(covid_by_date$Last_Update)
+        country_popup <- paste0("<strong>Country: </strong>",
+                                covid_by_date$NAME,
+                                "<br><strong>",
+                                "Total Cases: ",
+                                covid_by_date$Incidence_Rate,
+                                "<br><strong>")
+        leafletProxy("map", data = covid_by_date) %>%
+            addPolygons(
+                fillColor = ~pal(covid_by_date$Incidence_Rate),
+                fillOpacity = 0.6,
+                weight = 2,
+                color ="white",
+                popup = country_popup,
+                layerId = ~NAME
+            )
+    })
+#--------------------------------------------------------------------------------------# Second Page Ends Here
 })
 
