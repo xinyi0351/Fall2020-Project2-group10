@@ -1,0 +1,13 @@
+name: output
+title: output
+username:
+account: xinyi0351
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2989210
+bundleId: 3726538
+url: https://xinyi0351.shinyapps.io/output/
+when: 1602431702.88624
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: [project2] combine datasets.ipynb|[project2] distance calculator.ipynb|090120clean.csv|week1cleaned.csv|week2cleaned.csv|week3cleaned.csv|week4cleaned.csv|week5cleaned.csv

@@ -17,7 +17,7 @@ if (!require("RCurl")) {
 }
 if (!require("maps")) {
   install.packages("maps")
-  library(map)
+  library(maps)
 }
 if (!require("maptools")) {
   install.packages("maptools")
@@ -143,19 +143,19 @@ countylevelmap <- function(x){
   pal <- colorNumeric('YlOrRd', NULL, n = 9,)
   # for markers
   my_att <- attraction[attraction$province_state == x,]
-  attpop <- paste('<strong>',my_att$taname,'<br> Label:</strong>',my_att$label,
-                  '<br><strong>Link:</strong>',my_att$source)
+  attpop <- paste('<strong>',my_att$taname,'<br> Label:</strong>',my_att$label)
   # create markers
   leafIcons <- icons(
     iconUrl = ifelse(my_att$label %in% c('University','Landmark','Monument','Museum','Theater'),'https://www.flaticon.com/svg/static/icons/svg/3581/3581154.svg',
                      ifelse(my_att$label %in% c('Hiking','Trail'),'https://www.flaticon.com/svg/static/icons/svg/3373/3373903.svg',
-                            ifelse(my_att$label %in% c("Amusement Park","National Park","Park"),'https://www.flaticon.com/svg/static/icons/svg/2510/2510287.svg',
+                            ifelse(my_att$label %in% c("Amusement Park","National Park","Park",'Zoo','Ranch'),'https://www.flaticon.com/svg/static/icons/svg/2510/2510287.svg',
                                    ifelse(my_att$label %in% c('Boat Tour','Beach'), 'https://www.flaticon.com/svg/static/icons/svg/1175/1175010.svg',
                                           ifelse(my_att$label %in% c('Wineries','Casino'), 'https://www.flaticon.com/svg/static/icons/svg/1432/1432256.svg',
-                                                 ifelse(my_att$label == "Arenas & Stadiums", 'flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
+                                                 ifelse(my_att$label == "Arenas & Stadiums", 'https://www.flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
                                           ))))),
     iconWidth = 38, iconHeight = 40, shadowWidth = 10, shadowHeight = 10
   )
+  # Produce Map:
   return(leaflet() %>% addTiles() %>%
            addPolygons(data = data,fillColor = ~pal(incidence_rate), fillOpacity = 0.5, popup = pop,color = 'white')%>%
            addMarkers(data = my_att, ~longitude,~latitude, label = ~taname, icon = leafIcons, popup = attpop)
