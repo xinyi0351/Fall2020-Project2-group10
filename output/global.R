@@ -71,6 +71,11 @@ if (!require("sp")) {
 
 covid <- read_csv('covid_cleaned.csv')
 att <- read_csv('Project 2 State Attractions.csv')
+att <- att %>%
+  rename('Lng' = `Latitude (E/W)`) %>%
+  rename('Lat' = `Longitude (N/S)`) %>%
+  mutate(Lng = -Lng)
+
 covid <-  covid %>%
   filter(!is.na(Long_)) %>%
   filter(!is.na(Lat)) %>%
@@ -98,11 +103,8 @@ state <- tigris::states() %>% filter(NAME %in% c('New York','New Jersey','Massac
                                                  'Rhode Island','West Virginia'))
 
 
-randomData <- rnorm(n=nrow(geo_try_2), 150, 30)
-long <- att$`Longitude (N/S)`
-lati <- -att$`Latitude (E/W)`
 
-#--------------------------------------------------------------------------------------# Third Page Ends Here
+#--------------------------------------------------------------------------------------# Second Page Ends Here
 # begin data prep
 page2 <- read_csv('covid_cleaned.csv') %>% filter(Last_Update == max(Last_Update)) %>%
   filter(Admin2 != 'Unassigned') %>%
