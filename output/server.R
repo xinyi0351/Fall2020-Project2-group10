@@ -309,7 +309,7 @@ shinyServer(function(input, output) {
         }
     }) 
 #----------------------------------------------------------------------------------# First Page end Here
-    covid_by_date <- covid %>% 
+    covid_by_date <- covid %>%
         filter(Last_Update == format.Date("2020-09-01", '%Y-%m-%d'))
     pal <- colorBin("Greens", NULL, bins = 8)
     att_by_dist <- att %>%
@@ -339,18 +339,25 @@ shinyServer(function(input, output) {
                                                          ifelse(att_by_dist$Label == "Arenas & Stadiums", 'flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
                                                   ))))),
             iconWidth = 38, iconHeight = 40, shadowWidth = 10, shadowHeight = 10)
-        
+        print(covid_by_date %>% filter(NAME == 'Suffolk'))
+        print(covid_by_date %>% filter(NAME == 'Kings'))
+        print(covid_by_date %>% filter(NAME == 'Queens'))
         leaflet(covid_by_date) %>%
             addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 4, maxZoom = 10)) %>%
             setView(lat = 40.75042, lng = -73.98928, 10) %>%
             addPolygons(
-                layerId = ~NAME,
                 fillColor = ~pal(covid_by_date$Incidence_Rate),
                 fillOpacity = 0.6,
                 weight = 2,
                 color = "white",
                 popup = country_popup) %>%
             addMarkers(data = att_by_dist, lat = att_by_dist$Lat, lng = att_by_dist$Lng, popup= attraction_pop, icon = leafIcons, label = ~Name, group = "one")
+        
+        # leaflet(covid) %>%
+        #   addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 4, maxZoom = 10)) %>%
+        #   addPolygons(
+        #     fillColor = "red"
+        #   )
     })
     
     
@@ -375,8 +382,8 @@ shinyServer(function(input, output) {
                     weight = 2,
                     color ="white",
                     popup = country_popup,
-                    layerId = ~NAME
-                ) %>% 
+                    layerId = ~GEOID
+                ) %>%
                 clearGroup(group = "one")
         }
         else{
@@ -415,8 +422,8 @@ shinyServer(function(input, output) {
                     weight = 2,
                     color ="white",
                     popup = country_popup,
-                    layerId = ~NAME
-                ) %>% 
+                    layerId = ~GEOID
+                ) %>%
                 clearGroup(group = "one") %>%
                 addMarkers(data = att_by_dist, lat = ~Lat, lng = ~Lng, popup= attraction_pop, icon = leafIcons, label = ~Name, group = "one")
         }

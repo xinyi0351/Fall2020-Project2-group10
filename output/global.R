@@ -83,7 +83,8 @@ covid <-  covid %>%
   filter(!is.na(Long_)) %>%
   filter(!is.na(Lat)) %>%
   filter(!is.na(Incidence_Rate)) %>%
-  filter(Admin2 != 'Unassigned')
+  filter(Admin2 != 'Unassigned') %>%
+  mutate(FIPS = ifelse(Province_State == "Connecticut", paste0("0",FIPS), FIPS))
 
 date_choices <- as.Date(covid$Last_Update,format = 'X%m.%d.%y')
 
@@ -93,19 +94,20 @@ geo_try <- counties(c('New York','New Jersey','Massachusetts','Virginia',
 
 #geo_try_2 <- merge(geo_try, covid, by.x = "NAME", by.y = "Province_State")
 
+geo_try <- geo_try %>% mutate(Combine = paste(STATEFP, COUNTYFP, sep = ""))
+
 geo_try_2 <- geo_join(geo_try, covid, "NAME", "Admin2")
 
 
+# covid <- merge(geo_try,
+#                covid,
+#                by.x = 'NAME',
+#                by.y = 'Admin2',sort = FALSE)
+
 covid <- merge(geo_try,
                covid,
-               by.x = 'NAME',
-               by.y = 'Admin2',sort = FALSE)
-
-state <- tigris::states() %>% filter(NAME %in% c('New York','New Jersey','Massachusetts','Virginia',
-                                                 'Maryland','Pennsylvania','Connecticut','Delaware',
-                                                 'Rhode Island','West Virginia'))
-
-
+               by.x = 'Combine',
+               by.y = 'FIPS')
 
 #--------------------------------------------------------------------------------------# Second Page Ends Here
 # begin data prep
