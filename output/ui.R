@@ -19,6 +19,7 @@ ui <- dashboardPage(
     dashboardHeader(title = 'Covid-19 Getaway Advisor'),
     dashboardSidebar(
         sidebarMenu(
+            menuItem("Home", tabName = "Home", icon = icon("home")),
             menuItem(tags$embed('Overview'),icon = icon('virus'),tabName = 'covidmap'),
             menuItem(tags$em('Choropleths'),icon = icon('head-side-mask'),tabName = 'choro'),
             #menuItem(tags$em('clustermap'),icon = icon('lungs'),tabName = 'cluster'),
@@ -27,6 +28,16 @@ ui <- dashboardPage(
     ),
     dashboardBody(
         tabItems(
+            tabItem(tabName = "Home",
+                    fluidPage(
+                        fluidRow(
+                            box(width = 15, title = "Introduction", status = "warning",
+                                solidHeader = TRUE, h3("Nearby Travel Destinations for New Yorkers during COVID-19"),
+                                h4("By Charles Shin, Xinyi Zhang, Wei Yin, Mubai Liu, LJ Zhang"),
+                                h5("The ability to travel in the United States during the year 2020 has been impacted significantly due to the COVID-19 outbreak. As the country recently experienced grim milestones of almost 8 million confirmed cases and over 200,000 deaths, many people share the conflict in interest between the urge to travel after months of social isolation and the desire to prevent exposure to the coronavirus. This sentiment is perhaps most sharply felt in New York City, a place that initially was one of the global hotspots of the pandemic before cases started to recede due to effective social distancing policies. Such policies were instrumental in curbing the climbing rates of COVID-19, but at the same time ensured that millions of residents work from home and restrict time outdoors to the bare minumum. As schools and universities gradually reopen, and with the holiday seasons right around the corner, this conflict of interest threatens to only exacerbate."),
+                                h5("This application is specifically designed for New Yorkers who are eager to experience a short break from confinement while at the same time keep safety from COVID-19 as their highest priority. Users will be able use an interactive map to explore 11 nearby states all within driving distance, thereby eliminating the need to fly and potentially risk more COVID-19 exposure. Each state has a breakdown of up-to-date COVID-19 statistics that can better inform whether a user would want to travel there, coupled with the ability to view the safest cities within that state. The application also provides information on the top 5, currently open attractions for each state, ranked and reviewed by Tripadvisor. Users will be able to filter searches based on their preference of which type of state attractions they wish to visit, and NYC quarantine policies for the given states will be provided."), 
+                                )),
+                    )),
             tabItem(
                 tabName = 'covidmap',
                 tags$h1('COVID trend'),
