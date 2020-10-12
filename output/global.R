@@ -72,6 +72,8 @@ if (!require("rgdal")){
   library(rgdal)
 }
 
+b64 <- base64enc::dataURI(file="group10.png", mime="image/png")
+
 covid <- read_csv('covid_cleaned.csv')
 att <- read_csv('Project 2 State Attractions.csv')
 att <- att %>%
