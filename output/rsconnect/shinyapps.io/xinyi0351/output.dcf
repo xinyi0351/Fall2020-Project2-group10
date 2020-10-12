@@ -5,9 +5,9 @@ account: xinyi0351
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2989210
-bundleId: 3726538
+bundleId: 3732173
 url: https://xinyi0351.shinyapps.io/output/
-when: 1602431702.88624
+when: 1602545631.15355
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: [project2] combine datasets.ipynb|[project2] distance calculator.ipynb|090120clean.csv|week1cleaned.csv|week2cleaned.csv|week3cleaned.csv|week4cleaned.csv|week5cleaned.csv
+ignoredFiles: 090120clean.csv|README.md|State_quarantine_policies.csv|week1cleaned.csv|week2cleaned.csv|week3cleaned.csv|week4cleaned.csv|week5cleaned.csv|Wen_Intro (1).pptx|.ipynb_checkpoints/[project2] combine datasets-checkpoint.ipynb|.ipynb_checkpoints/[project2] distance calculator-checkpoint.ipynb
