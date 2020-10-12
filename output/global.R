@@ -67,7 +67,10 @@ if (!require("sp")) {
   install.packages("sp")
   library(sp)
 }
-
+if (!require("rgdal")){
+  install.packages("rgdal")
+  library(rgdal)
+}
 
 covid <- read_csv('covid_cleaned.csv')
 att <- read_csv('Project 2 State Attractions.csv')
