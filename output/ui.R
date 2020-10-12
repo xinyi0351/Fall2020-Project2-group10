@@ -48,7 +48,7 @@ ui <- dashboardPage(
                 tabName = 'choro', 
                 tags$h1('Where do you want to visit'),
                 tags$h3('How does indecident rates in each county changes? Select on time scale and distance scale'),
-                tags$h3('Check out the trend of covid-cases and make your decision!')
+                tags$h3('Check out the trend of covid-cases and make your decision!'),
                 #sidebarPanel(id = "control", class = "panel panel-default", fixed = TRUE, draggable = TRUE,
                 # top = 300, left = 20, right = "auto", bottom = "auto", width = 100, height = "auto",
                 # selectInput('choices','Which data to visualize:',
