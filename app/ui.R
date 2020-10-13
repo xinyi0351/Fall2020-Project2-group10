@@ -24,7 +24,7 @@ ui <- dashboardPage(
             menuItem(tags$em('Choropleths'),icon = icon('head-side-mask'),tabName = 'choro'),
             #menuItem(tags$em('clustermap'),icon = icon('lungs'),tabName = 'cluster'),
             menuItem(tags$em('Find your destinations'),icon = icon('lightbulb'),tabName = 'destination'),
-            menuItem("State Quarantine Policy", tabName = "SQP", icon = icon('viruses'))
+            menuItem(tags$em("State Quarantine Policy"), tabName = "SQP", icon = icon('viruses'))
         )
     ),
     dashboardBody(

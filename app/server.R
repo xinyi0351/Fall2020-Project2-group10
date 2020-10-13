@@ -339,9 +339,9 @@ shinyServer(function(input, output) {
                                                          ifelse(att_by_dist$Label == "Arenas & Stadiums", 'flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
                                                   ))))),
             iconWidth = 38, iconHeight = 40, shadowWidth = 10, shadowHeight = 10)
-        print(covid_by_date %>% filter(NAME == 'Suffolk'))
-        print(covid_by_date %>% filter(NAME == 'Kings'))
-        print(covid_by_date %>% filter(NAME == 'Queens'))
+        # print(covid_by_date %>% filter(NAME == 'Suffolk'))
+        # print(covid_by_date %>% filter(NAME == 'Kings'))
+        # print(covid_by_date %>% filter(NAME == 'Queens'))
         leaflet(covid_by_date) %>%
             addProviderTiles("CartoDB.Positron", options = providerTileOptions(minZoom = 4, maxZoom = 10)) %>%
             setView(lat = 40.75042, lng = -73.98928, 10) %>%
