@@ -71,6 +71,10 @@ if (!require("rgdal")){
   install.packages("rgdal")
   library(rgdal)
 }
+if (!require("basictabler")) {
+  install.packages("basictabler")
+  library(basictabler)
+}
 
 b64 <- base64enc::dataURI(file="../output/group10.png", mime="image/png")
 
