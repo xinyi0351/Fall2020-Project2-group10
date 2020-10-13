@@ -4,19 +4,6 @@
 
 ![thumbnail](/output/group10.png)
 
-In this second project of GR5243 Applied Data Science, we develop a *Exploratory Data Analysis and Visualization* shiny app on a topic of your choice using [JHU CSSE Covid-19 Data](https://github.com/CSSEGISandData/COVID-19) or NYC Health open data released on the [NYC Coronavirus Disease 2019 Data](https://github.com/nychealth/coronavirus-data) website. See [Project 2 Description](doc/project2_desc.md) for more details.  
-
-The **learning goals** for this project is:
-
-- business intelligence for data science
-- study legacy codes and further development
-- data cleaning
-- data visualization
-- systems development/design life cycle
-- shiny app/shiny server
-
-*The above general statement about project 2 can be removed once you are finished with your project. It is optional.
-
 ## Nearby Travel Destinations for New Yorkers during COVID-19
 Term: Fall 2020
 
@@ -31,7 +18,7 @@ Term: Fall 2020
 
 	This application is specifically designed for New Yorkers who are eager to experience a short break from confinement while at the same time keep safety from COVID-19 as their highest priority. Users will be able use an interactive map to explore 11 nearby states all within driving distance, thereby eliminating the need to fly and potentially risk more COVID-19 exposure. Each state has a breakdown of up-to-date COVID-19 statistics that can better inform whether a user would want to travel there, coupled with the ability to view the safest cities within that state. The application also provides information on the top 5, currently open attractions for each state, ranked and reviewed by Tripadvisor. Users will be able to filter searches based on their preference of which type of state attractions they wish to visit, and NYC quarantine policies for the given states will be provided.
 
-+ **Data source**: All COVID-19 data was extracted from this source: https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports
++ **Data source**: All COVID-19 data was extracted from this source: [JHU CSSE Covid-19 Data](https://github.com/CSSEGISandData/COVID-19)
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
 
