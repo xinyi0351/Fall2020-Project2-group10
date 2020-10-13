@@ -435,12 +435,10 @@ shinyServer(function(input, output) {
     output$desty <- renderLeaflet(
         countylevelmap(fo())
     )
-    output$destable <- DT::renderDataTable(
-        DT::datatable(attraction[attraction$province_state == tolower(fo()),][,1:7],
-                      options = list( pageLength = 3),
-                      colnames = c('Desitination','State','County','Latitude','Longitude','Label','Source'))
-    )
     
+    output$destable <- DT::renderDataTable(
+        countytabel(fo())    
+    )
     
     output$tbl <- renderTable(data.frame(c("State", "Massachusetts", "Virginia", "Maryland", "West Virginia", "Pennsylvania", "Connecticut", "New Jersey", "Rhode Island", "Maine", "Vermont", "Delaware", "New Hampshire"),
                                  c("Quarantine Policy on NY State","N", "N", "N", "N", "N", "N", "N", "N", "Y", "Y", "N", "Y"),

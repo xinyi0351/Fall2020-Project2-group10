@@ -109,7 +109,7 @@ ui <- dashboardPage(
                                 label = 'Please select a states',
                                 choices = c('New York','New Jersey','Massachusetts','Virginia',
                                             'Maryland','Pennsylvania','Connecticut','Delaware',
-                                            'Rhode Island','West Virginia'))
+                                            'Rhode Island','West Virginia','Rhode Island','District of Columbia'))
                 ),
                 mainPanel(
                     leafletOutput(outputId = 'desty'),

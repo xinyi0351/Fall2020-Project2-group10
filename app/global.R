@@ -123,7 +123,7 @@ colnames(page2) <- tolower(colnames(page2))
 # the shape file
 county <- readOGR('../data/cb_2018_us_county_500k/cb_2018_us_county_500k.shp')
 # select target states
-county <- county[county$STATEFP %in% c('09','10','24','25','34','36','42','44','51','53','54'),]
+county <- county[county$STATEFP %in% c('09','10','24','25','34','36','42','44','51','11','54'),]
 
 # get the attractions data
 attraction <- read_csv('../output/Project 2 State Attractions.csv') %>%
@@ -146,6 +146,7 @@ countylevelmap <- function(x){
   pop <- paste0('<strong>',data$NAME,'</strong>  ',round(data$incidence_rate,digits = 2))
   pal <- colorNumeric('YlOrRd', NULL, n = 9,)
   # for markers
+  x <- ifelse(x == 'district of columbia','washington dc', x)
   my_att <- attraction[attraction$province_state == x,]
   attpop <- paste('<strong>',my_att$taname,'<br> Label:</strong>',my_att$label)
   # create markers
@@ -164,4 +165,12 @@ countylevelmap <- function(x){
            addPolygons(data = data,fillColor = ~pal(incidence_rate), fillOpacity = 0.5, popup = pop,color = 'white')%>%
            addMarkers(data = my_att, ~longitude,~latitude, label = ~taname, icon = leafIcons, popup = attpop)
   )
+}
+
+countytabel <- function(x){
+  x <- ifelse(x == 'District of Columbia','washington dc',x)
+  return(DT::datatable(attraction[attraction$province_state == tolower(x),][,1:7],
+                options = list( pageLength = 3),
+                colnames = c('Desitination','State','County','Latitude','Longitude','Label','Source')))
+  
 }
