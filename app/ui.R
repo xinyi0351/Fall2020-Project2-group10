@@ -31,7 +31,7 @@ ui <- dashboardPage(
         tabItems(
             tabItem(tabName = "SQP",
                     tags$h1('Check the quarantine policy in your desitination'),
-                    tags$h3("There are 12 states within one day's driving distance of NYC (500 miles).  Why do we only focus on 6 out of the 12?"),
+                    tags$h3("There are 13 states within one day's driving distance of NYC (500 miles).  Why do we only focus on 7 out of the 12?"),
                     mainPanel(
                         tableOutput('tbl')
                     )

@@ -440,9 +440,9 @@ shinyServer(function(input, output) {
         countytabel(fo())    
     )
     
-    output$tbl <- renderTable(data.frame(c("State", "Massachusetts", "Virginia", "Maryland", "West Virginia", "Pennsylvania", "Connecticut", "New Jersey", "Rhode Island", "Maine", "Vermont", "Delaware", "New Hampshire"),
-                                 c("Quarantine Policy on NY State","N", "N", "N", "N", "N", "N", "N", "N", "Y", "Y", "N", "Y"),
-                                 c("NY State Quarantine Policy on Others","N", "N", "N", "Y", "N", "N", "N", "Y", "N", "N", "Y", "N")),
+    output$tbl <- renderTable(data.frame(c("State", "Massachusetts", "Virginia", "Maryland", "West Virginia", "Pennsylvania", "Connecticut", "New Jersey", "Rhode Island", "Maine", "Vermont", "Delaware", "New Hampshire", "Washington D.C."),
+                                 c("Quarantine Policy on NY State","N", "N", "N", "N", "N", "N", "N", "N", "Y", "Y", "N", "Y", "N"),
+                                 c("NY State Quarantine Policy on Others","N", "N", "N", "Y", "N", "N", "N", "Y", "N", "N", "Y", "N", "N")),
                               align="c", colnames = F)
     
     
