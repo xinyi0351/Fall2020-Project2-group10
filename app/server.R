@@ -23,7 +23,7 @@ library(rgdal)
 options(tigris_use_cache = TRUE)
 library(tigris)
 library(RCurl)
-
+library(basictabler)
 
 source("global.R") 
 rawfile <- "https://raw.githubusercontent.com/zlj-0131/Data/main/allstate.csv"
@@ -440,6 +440,14 @@ shinyServer(function(input, output) {
                       options = list( pageLength = 3),
                       colnames = c('Desitination','State','County','Latitude','Longitude','Label','Source'))
     )
+    
+    
+    output$tbl <- renderTable(data.frame(c("State", "Massachusetts", "Virginia", "Maryland", "West Virginia", "Pennsylvania", "Connecticut", "New Jersey", "Rhode Island", "Maine", "Vermont", "Delaware", "New Hampshire"),
+                                 c("Quarantine Policy on NY State","N", "N", "N", "N", "N", "N", "N", "N", "Y", "Y", "N", "Y"),
+                                 c("NY State Quarantine Policy on Others","N", "N", "N", "Y", "N", "N", "N", "Y", "N", "N", "Y", "N")),
+                              align="c", colnames = F)
+    
+    
 
 })
 

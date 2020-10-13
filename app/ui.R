@@ -23,11 +23,18 @@ ui <- dashboardPage(
             menuItem(tags$embed('Overview'),icon = icon('virus'),tabName = 'covidmap'),
             menuItem(tags$em('Choropleths'),icon = icon('head-side-mask'),tabName = 'choro'),
             #menuItem(tags$em('clustermap'),icon = icon('lungs'),tabName = 'cluster'),
-            menuItem(tags$em('Find your destinations'),icon = icon('lightbulb'),tabName = 'destination')
+            menuItem(tags$em('Find your destinations'),icon = icon('lightbulb'),tabName = 'destination'),
+            menuItem("State Quarantine Policy", tabName = "SQP", icon = icon('viruses'))
         )
     ),
     dashboardBody(
         tabItems(
+            tabItem(tabName = "SQP",
+                    tags$h2("There are 12 states within one day's driving distance of NYC (500 miles).  Why do we only focus on 6 out of the 12?"),
+                    mainPanel(
+                        tableOutput('tbl')
+                    )
+            ),
             tabItem(tabName = "Home",
                     fluidPage(
                         fluidRow(
@@ -40,7 +47,7 @@ ui <- dashboardPage(
                                 h4("This application is specifically designed for New Yorkers who are eager to experience a short break from confinement while at the same time keep safety from COVID-19 as their highest priority. Users will be able use an interactive map to explore 11 nearby states all within driving distance, thereby eliminating the need to fly and potentially risk more COVID-19 exposure. Each state has a breakdown of up-to-date COVID-19 statistics that can better inform whether a user would want to travel there, coupled with the ability to view the safest cities within that state. The application also provides information on the top 5, currently open attractions for each state, ranked and reviewed by Tripadvisor. 
                                    Users will be able to filter searches based on their preference of which type of state attractions they wish to visit, and NYC quarantine policies for the given states will be provided."), 
                                 img(src=b64,style = "display: block; margin-left: auto; margin-right: auto;" ),
-                                )),
+                            )),
                     )),
             tabItem(
                 tabName = 'covidmap',
@@ -48,17 +55,17 @@ ui <- dashboardPage(
                 tags$h4('A nationwide overview on how the epidemic spreading. Discover how will the different indices change over the latest month. 
                         Slide the time bar to discover the trends.'),
                 sidebarPanel( width = "100%",
-                    selectInput('data',
-                                label = 'Please select an item',
-                                choices = c('Confirmed','Deaths','Recovered','Active','Incidence Rate','Case Fatality Ratio')
-                    ),
-                    sliderInput("DatesMerge",
-                                "Dates:",
-                                min = as.Date("2020-09-01", "%Y-%m-%d"),
-                                max = as.Date("2020-10-11", "%Y-%m-%d"),
-                                value = as.Date("2020-10-11"), timeFormat="%Y-%m-%d"),
-                    fluidRow(box(width = "100%", leafletOutput(outputId = 'm0')))
-            )),
+                              selectInput('data',
+                                          label = 'Please select an item',
+                                          choices = c('Confirmed','Deaths','Recovered','Active','Incidence Rate','Case Fatality Ratio')
+                              ),
+                              sliderInput("DatesMerge",
+                                          "Dates:",
+                                          min = as.Date("2020-09-01", "%Y-%m-%d"),
+                                          max = as.Date("2020-10-11", "%Y-%m-%d"),
+                                          value = as.Date("2020-10-11"), timeFormat="%Y-%m-%d"),
+                              fluidRow(box(width = "100%", leafletOutput(outputId = 'm0')))
+                )),
             tabItem(
                 tabName = 'choro', 
                 tags$h1('Where do you want to visit'),
@@ -72,21 +79,21 @@ ui <- dashboardPage(
                 #                         'Rhode Island','West Virginia'),
                 #             selected = c('New York')),
                 sidebarPanel(id = "control",
-                              sliderInput('date_map','Input Date:',
-                                          #first day of data recording
-                                          min = as.Date(date_choices[1]),
-                                          #present day of data recording
-                                          max = as.Date(tail(date_choices,1)),
-                                          value = as.Date('2020-09-01','%Y-%m-%d'),
-                                          timeFormat = "%Y-%m-%d",
-                                          animate = TRUE, step = 1),
-                              sliderInput('distance_map', 'Distance From New York: (Miles)',
-                                          min = 0,
-                                          max = round(max(att$distance), -2),
-                                          value = 500,
-                                          animate = FALSE,
-                                          step = 10),
-                              style = "opacity: 0.80"),
+                             sliderInput('date_map','Input Date:',
+                                         #first day of data recording
+                                         min = as.Date(date_choices[1]),
+                                         #present day of data recording
+                                         max = as.Date(tail(date_choices,1)),
+                                         value = as.Date('2020-09-01','%Y-%m-%d'),
+                                         timeFormat = "%Y-%m-%d",
+                                         animate = TRUE, step = 1),
+                             sliderInput('distance_map', 'Distance From New York: (Miles)',
+                                         min = 0,
+                                         max = round(max(att$distance), -2),
+                                         value = 500,
+                                         animate = FALSE,
+                                         step = 10),
+                             style = "opacity: 0.80"),
                 mainPanel(
                     leafletOutput("map", width = "80%", height = "800"),
                 )
@@ -112,6 +119,6 @@ ui <- dashboardPage(
             
         ),
     )
-    )
+)
 
 
