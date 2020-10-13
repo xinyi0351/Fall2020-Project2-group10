@@ -1,0 +1,12 @@
+name: covid19travel
+title: covid19travel
+username:
+account: zlj0131
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3008157
+bundleId: 3736729
+url: https://zlj0131.shinyapps.io/covid19travel/
+when: 1602627005.75467
+asMultiple: FALSE
+asStatic: FALSE
