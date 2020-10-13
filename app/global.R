@@ -1,13 +1,3 @@
-#--------------------------------------------------------------------
-###############################Install Related Packages #######################
-if (!require("dplyr")) {
-  install.packages("dplyr")
-  library(dplyr)
-}
-if (!require("tibble")) {
-  install.packages("tibble")
-  library(tibble)
-}
 if (!require("tidyverse")) {
   install.packages("tidyverse")
   library(tidyverse)
@@ -17,17 +7,21 @@ if (!require("shinythemes")) {
   library(shinythemes)
 }
 
-if (!require("sf")) {
-  install.packages("sf")
-  library(sf)
+if (!require("raster")) {
+  install.packages("raster")
+  library(raster)
 }
 if (!require("RCurl")) {
   install.packages("RCurl")
   library(RCurl)
 }
-if (!require("tmap")) {
-  install.packages("tmap")
-  library(tmap)
+if (!require("maps")) {
+  install.packages("maps")
+  library(maps)
+}
+if (!require("maptools")) {
+  install.packages("maptools")
+  library(maptools)
 }
 if (!require("rgdal")) {
   install.packages("rgdal")
@@ -53,106 +47,126 @@ if (!require("ggplot2")) {
   install.packages("ggplot2")
   library(ggplot2)
 }
-if (!require("viridis")) {
-  install.packages("viridis")
-  library(viridis)
+if (!require("tigris")) {
+  install.packages("tigris")
+  library(tigris)
 }
-#--------------------------------------------------------------------
-###############################Define Functions#######################
-data_cooker <- function(df){
-  #input dataframe and change the Country/Region column into standard format
-  df$Country.Region <- as.character(df$Country.Region)
-  df$Country.Region[df$Country.Region == "Congo (Kinshasa)"] <- "Dem. Rep. Congo"
-  df$Country.Region[df$Country.Region == "Congo (Brazzaville)"] <- "Congo"
-  df$Country.Region[df$Country.Region == "Central African Republic"] <- "Central African Rep."
-  df$Country.Region[df$Country.Region == "Equatorial Guinea"] <- "Eq. Guinea"
-  df$Country.Region[df$Country.Region == "Western Sahara"]<-"W. Sahara"
-  df$Country.Region[df$Country.Region == "Eswatini"] <- "eSwatini"
-  df$Country.Region[df$Country.Region == "Taiwan*"] <- "Taiwan"
-  df$Country.Region[df$Country.Region== "Cote d'Ivoire"] <-"Côte d'Ivoire"
-  df$Country.Region[df$Country.Region == "Korea, South"] <- "South Korea"
-  df$Country.Region[df$Country.Region == "Bosnia and Herzegovina"] <- "Bosnia and Herz."
-  df$Country.Region[df$Country.Region == "US"] <- "United States of America"
-  df$Country.Region[df$Country.Region == "Burma"]<-"Myanmar"
-  df$Country.Region[df$Country.Region == "Holy See"]<-"Vatican"
-  df$Country.Region[df$Country.Region=="South Sudan"]<-"S. Sudan"
-  return(df)
+if (!require("geojsonio")) {
+  install.packages("geojsonio")
+  library(geojsonio)
 }
-
-
-data_transformer <- function(df) {
-  #################################################################
-  ##Given dataframe tranform the dataframe into aggregate level with
-  ##rownames equal to countries name, and colnames equals date
-  #################################################################
-  #clean the country/regionnames
-  df <- data_cooker(df)
-  #columns that don't need 
-  not_select_cols <- c("Province.State","Lat","Long")
-  #aggregate the province into country level
-  aggre_df <- df %>% group_by(Country.Region) %>% 
-    select(-one_of(not_select_cols)) %>% summarise_all(sum)
-  #assign the country name into row names 
-  aggre_df <- aggre_df %>% remove_rownames %>% 
-    tibble::column_to_rownames(var="Country.Region")
-  #change the colume name into date format
-  date_name <- colnames(aggre_df)
-  #change e.g: "x1.22.20" -> "2020-01-22"
-  date_choices <- as.Date(date_name,format = 'X%m.%d.%y')
-  #assign column nam
-  colnames(aggre_df) <- date_choices
-  return(aggre_df)
+if (!require("rgdal")) {
+  install.packages("rgdal")
+  library(rgdal)
 }
-#--------------------------------------------------------------------
-###############################Data Preparation#######################
-#Data Sources
-"Dong E, Du H, Gardner L. An interactive web-based dashboard to track COVID-19 in real time. 
-Lancet Inf Dis. 20(5):533-534. doi: 10.1016/S1473-3099(20)30120-1"
-#get the daily global cases data from API
-Cases_URL <- getURL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv")
-global_cases <- read.csv(text = Cases_URL)
-
-#get the daily global deaths data from API
-Death_URL <- getURL("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
-global_death <- read.csv(text = Death_URL)
-
-
-#get aggregate cases 
-aggre_cases <- as.data.frame(data_transformer(global_cases))
-#get aggregate death
-aggre_death <- as.data.frame(data_transformer(global_death))
-#define date_choices 
-date_choices <- as.Date(colnames(aggre_cases),format = '%Y-%m-%d')
-#define country_names
-country_names_choices <- rownames(aggre_cases)
-
-#Download the spatial polygons dataframe in this link
-# https://www.naturalearthdata.com/downloads/50m-cultural-vectors/50m-admin-0-countries-2/
-
-output_shapefile_filepath <- "./output/countries_shapeFile.RData"
-
-#if already has countries_shapeFile.RData under output folder, no need to process it again
-#otherwise, read files from data folder to create countries_shapeFile.RData under output folder
-if(file.exists(output_shapefile_filepath)){
-  load(output_shapefile_filepath)
-}else{
-  countries <- readOGR(dsn ="../data/ne_50m_admin_0_countries",
-                       layer = "ne_50m_admin_0_countries",
-                       encoding = "utf-8",use_iconv = T,
-                       verbose = FALSE)
-  save(countries, file=output_shapefile_filepath)
+if (!require("htmltools")) {
+  install.packages("htmltools")
+  library(htmltools)
+}
+if (!require("sp")) {
+  install.packages("sp")
+  library(sp)
+}
+if (!require("rgdal")){
+  install.packages("rgdal")
+  library(rgdal)
 }
 
+b64 <- base64enc::dataURI(file="group10.png", mime="image/png")
 
-#make a copy of aggre_cases dataframe
-aggre_cases_copy <- as.data.frame(aggre_cases)
-aggre_cases_copy$country_names <- as.character(rownames(aggre_cases_copy))
+covid <- read_csv('covid_cleaned.csv')
+att <- read_csv('Project 2 State Attractions.csv')
+att <- att %>%
+  rename('Lng' = `Latitude (E/W)`) %>%
+  rename('Lat' = `Longitude (N/S)`) %>%
+  mutate(Lng = -Lng)
 
-#make a copy of aggre_death dataframe
-aggre_death_copy <- as.data.frame(aggre_death)
-aggre_death_copy$country_names <- as.character(rownames(aggre_death_copy))
+covid <-  covid %>%
+  filter(!is.na(Long_)) %>%
+  filter(!is.na(Lat)) %>%
+  filter(!is.na(Incidence_Rate)) %>%
+  filter(Admin2 != 'Unassigned') %>%
+  mutate(FIPS = ifelse(Province_State == "Connecticut", paste0("0",FIPS), FIPS))
 
-binning<- function(x) {10^(ceiling(log10(x)))}
+date_choices <- as.Date(covid$Last_Update,format = 'X%m.%d.%y')
 
-#use save.image() at any time to save all environment data into an .RData file
-save.image(file='./output/covid-19.RData')
+geo_try <- counties(c('New York','New Jersey','Massachusetts','Virginia',
+                      'Maryland','Pennsylvania','Connecticut','Delaware',
+                      'Rhode Island','West Virginia'), cb =TRUE)
+
+#geo_try_2 <- merge(geo_try, covid, by.x = "NAME", by.y = "Province_State")
+
+geo_try <- geo_try %>% mutate(Combine = paste(STATEFP, COUNTYFP, sep = ""))
+
+geo_try_2 <- geo_join(geo_try, covid, "NAME", "Admin2")
+
+
+# covid <- merge(geo_try,
+#                covid,
+#                by.x = 'NAME',
+#                by.y = 'Admin2',sort = FALSE)
+
+covid <- merge(geo_try,
+               covid,
+               by.x = 'Combine',
+               by.y = 'FIPS')
+
+#--------------------------------------------------------------------------------------# Second Page Ends Here
+# begin data prep
+page2 <- read_csv('covid_cleaned.csv') %>% filter(Last_Update == max(Last_Update)) %>%
+  filter(Admin2 != 'Unassigned') %>%
+  mutate(FIPS = formatC(FIPS, width = 5, format = 'd', flag = '0') ) %>%
+  mutate(STATEFP = substr(FIPS, 1, 2)) %>% 
+  transform(Province_State = tolower(Province_State)) %>%
+  transform(Country_Region = tolower(Country_Region)) %>%
+  transform(Admin2 = tolower(Admin2)) %>%
+  # add leading zeros to any FIPS code that's less than 5 digits
+  transform(FIPS = formatC(FIPS, width = 5, format = 'd', flag = '0'))
+# lower column names
+colnames(page2) <- tolower(colnames(page2))
+
+# the shape file
+county <- readOGR('cb_2018_us_county_500k/cb_2018_us_county_500k.shp')
+# select target states
+county <- county[county$STATEFP %in% c('09','10','24','25','34','36','42','44','51','53','54'),]
+
+# get the attractions data
+attraction <- read_csv('Project 2 State Attractions.csv') %>%
+  transform(State = tolower(State)) %>%
+  transform(County = tolower(County))
+# rename columns
+colnames(attraction) <- tolower(colnames(attraction))
+colnames(attraction)[1:5] <- c('taname','province_state','admin2','latitude','longitude')
+attraction$longitude = -attraction$longitude
+
+# the funtion, input will be the state's name
+countylevelmap <- function(x){
+  x <- tolower(x)
+  foo <- page2[page2$province_state == x,]
+  # get the shape file for that state
+  code <- unique(foo$statefp)[1]
+  shape <- county[county$STATEFP == code,]
+  # for polygons
+  data <- sp::merge(x = shape, y = foo,by.y = 'fips', by.x = 'GEOID', all.y = TRUE, duplicateGeoms = TRUE)
+  pop <- paste0('<strong>',data$NAME,'</strong>  ',round(data$incidence_rate,digits = 2))
+  pal <- colorNumeric('YlOrRd', NULL, n = 9,)
+  # for markers
+  my_att <- attraction[attraction$province_state == x,]
+  attpop <- paste('<strong>',my_att$taname,'<br> Label:</strong>',my_att$label)
+  # create markers
+  leafIcons <- icons(
+    iconUrl = ifelse(my_att$label %in% c('University','Landmark','Monument','Museum','Theater'),'https://www.flaticon.com/svg/static/icons/svg/3581/3581154.svg',
+                     ifelse(my_att$label %in% c('Hiking','Trail'),'https://www.flaticon.com/svg/static/icons/svg/3373/3373903.svg',
+                            ifelse(my_att$label %in% c("Amusement Park","National Park","Park",'Zoo','Ranch'),'https://www.flaticon.com/svg/static/icons/svg/2510/2510287.svg',
+                                   ifelse(my_att$label %in% c('Boat Tour','Beach'), 'https://www.flaticon.com/svg/static/icons/svg/1175/1175010.svg',
+                                          ifelse(my_att$label %in% c('Wineries','Casino'), 'https://www.flaticon.com/svg/static/icons/svg/1432/1432256.svg',
+                                                 ifelse(my_att$label == "Arenas & Stadiums", 'https://www.flaticon.com/svg/static/icons/svg/2570/2570450.svg','https://www.flaticon.com/svg/static/icons/svg/2536/2536611.svg')
+                                          ))))),
+    iconWidth = 38, iconHeight = 40, shadowWidth = 10, shadowHeight = 10
+  )
+  # Produce Map:
+  return(leaflet() %>% addTiles() %>%
+           addPolygons(data = data,fillColor = ~pal(incidence_rate), fillOpacity = 0.5, popup = pop,color = 'white')%>%
+           addMarkers(data = my_att, ~longitude,~latitude, label = ~taname, icon = leafIcons, popup = attpop)
+  )
+}
