@@ -72,10 +72,11 @@ if (!require("rgdal")){
   library(rgdal)
 }
 
-b64 <- base64enc::dataURI(file="group10.png", mime="image/png")
+b64 <- base64enc::dataURI(file="../output/group10.png", mime="image/png")
 
-covid <- read_csv('covid_cleaned.csv')
-att <- read_csv('Project 2 State Attractions.csv')
+# Data Processing
+covid <- read_csv('../output/covid_cleaned.csv')
+att <- read_csv('../output/Project 2 State Attractions.csv')
 att <- att %>%
   rename('Lng' = `Latitude (E/W)`) %>%
   rename('Lat' = `Longitude (N/S)`) %>%
@@ -94,17 +95,7 @@ geo_try <- counties(c('New York','New Jersey','Massachusetts','Virginia',
                       'Maryland','Pennsylvania','Connecticut','Delaware',
                       'Rhode Island','West Virginia'), cb =TRUE)
 
-#geo_try_2 <- merge(geo_try, covid, by.x = "NAME", by.y = "Province_State")
-
 geo_try <- geo_try %>% mutate(Combine = paste(STATEFP, COUNTYFP, sep = ""))
-
-geo_try_2 <- geo_join(geo_try, covid, "NAME", "Admin2")
-
-
-# covid <- merge(geo_try,
-#                covid,
-#                by.x = 'NAME',
-#                by.y = 'Admin2',sort = FALSE)
 
 covid <- merge(geo_try,
                covid,
@@ -113,7 +104,7 @@ covid <- merge(geo_try,
 
 #--------------------------------------------------------------------------------------# Second Page Ends Here
 # begin data prep
-page2 <- read_csv('covid_cleaned.csv') %>% filter(Last_Update == max(Last_Update)) %>%
+page2 <- read_csv('../output/covid_cleaned.csv') %>% filter(Last_Update == max(Last_Update)) %>%
   filter(Admin2 != 'Unassigned') %>%
   mutate(FIPS = formatC(FIPS, width = 5, format = 'd', flag = '0') ) %>%
   mutate(STATEFP = substr(FIPS, 1, 2)) %>% 
@@ -126,12 +117,12 @@ page2 <- read_csv('covid_cleaned.csv') %>% filter(Last_Update == max(Last_Update
 colnames(page2) <- tolower(colnames(page2))
 
 # the shape file
-county <- readOGR('cb_2018_us_county_500k/cb_2018_us_county_500k.shp')
+county <- readOGR('../data/cb_2018_us_county_500k/cb_2018_us_county_500k.shp')
 # select target states
 county <- county[county$STATEFP %in% c('09','10','24','25','34','36','42','44','51','53','54'),]
 
 # get the attractions data
-attraction <- read_csv('Project 2 State Attractions.csv') %>%
+attraction <- read_csv('../output/Project 2 State Attractions.csv') %>%
   transform(State = tolower(State)) %>%
   transform(County = tolower(County))
 # rename columns
