@@ -97,7 +97,7 @@ date_choices <- as.Date(covid$Last_Update,format = 'X%m.%d.%y')
 
 geo_try <- counties(c('New York','New Jersey','Massachusetts','Virginia',
                       'Maryland','Pennsylvania','Connecticut','Delaware',
-                      'Rhode Island','West Virginia'), cb =TRUE)
+                      'Rhode Island','West Virginia','District of Columbia'), cb =TRUE)
 
 geo_try <- geo_try %>% mutate(Combine = paste(STATEFP, COUNTYFP, sep = ""))
 
