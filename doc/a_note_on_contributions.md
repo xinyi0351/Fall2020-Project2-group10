@@ -12,7 +12,7 @@ Mubai Liu built all features/functions in Choropleths page, organized github fil
 
 Charles Shin build the Home page,  noted during group meetings, rephrasing text materials, and collected data on states' attractions;
 
-Wen Yin collected data on states' attractions (Latitude, Longitude, type and popularity), researched states quarantine policies, built the State Quarantine Policy page, and developed the final presentation materials(design the PPT and organize the content to be presented in class).
+Wen Yin collected data on states' attractions (latitude, longitude, type and popularity), researched states quarantine policies, built the State Quarantine Policy page, and developed the final presentation materials(design the PPT and organize the content to be presented in class).
 
 Lingjia Zhang combine the covid datasets, developed the Overview page and helped the deployment;
 
