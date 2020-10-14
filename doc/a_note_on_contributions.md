@@ -8,7 +8,7 @@ Project 2
 
 **[Contribution Statement] **
 
-Mubai Liu built the Choropleths page, organized the files on Github and deployed the application;
+Mubai Liu built all features/functions in Choropleths page, organized github files and deployed the application;
 
 Charles Shin build the Home page,  noted during group meetings, rephrasing text materials, and collected data on states' attractions;
 
