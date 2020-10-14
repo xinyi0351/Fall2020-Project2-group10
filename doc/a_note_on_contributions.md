@@ -1,20 +1,21 @@
 ### A Note on Contributions
 
-Whenever we have team projects, there are always concerns on unequal contributions from members of a project team. In the ideal world, we are all here to put in our best efforts and learn together. Even in that ideal world, we have different skill sets and preparations, and we will still contribute differently to a project. 
+Project 2
 
-Therefore, you are required to post a *contribution statement* in the root README.md of your GitHub repo. Please beware that your GitHub repo will become public and remain public after the due date of the projects. 
+**Team members**:  Mubai Liu, Charles Shin, Wen Yin, Lingjia Zhang, Xinyi Zhang
 
-Post your title, team members, project abstract and a contribution statement in the README.md file.  This is a common practice for research scientific journals. 
+**Summary**: In this project, we developed a R shiny app exploring getaway destinations for new yorkers during covid-19. 
 
-Below is an example. If no contribution statement is provided, we will insert a default statement that goes "**All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement**. "
+**[Contribution Statement] **
 
----
-Sample project README statement.
+Mubai Liu built the Choropleths page, organized the files on Github and deployed the application;
 
-Project xxx
+Charles Shin build the Home page,  noted during group meetings, rephrasing text materials, and collected data on states' attractions;
 
-Team members: Avi Bond, Comma Deed, En Funn, Gem Hon
+Wen Yin collected data on states' attractions and policy on quarantine policies, and developed the State Quarantine Policy page;
 
-Summary: In this project, we developed a new method and improved the classification accuracy for images of cats and dogs to 99.9%
+Lingjia Zhang combine the covid datasets, developed the Overview page and helped the deployment;
 
-[Contribution Statement] AB, CD, EF and GH designed the study. AB and CD developed baseline classification model for evaluation. EF and GH explored feature engineering for improving the baseline model. AB, EF and GH discussed and designed the model evaluation protocol. CD carried out the computation for model evaluation. All team members contributed to the GitHub repository and prepared the presentation. All team members approve our work presented in our GitHub repository including this contribution statement.
+Xinyi Zhang established the structure of the shiny app, combine and updated the covid datasets, developed the Find Your Destination page, and helped wrapping up the app (adding texts and images). 
+
+All team members contributed during the brainstorming of the project topic and cleaning the datasets. All team members approve our work presented in our GitHub repository including this contribution statement.
