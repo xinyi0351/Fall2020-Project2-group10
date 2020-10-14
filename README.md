@@ -4,14 +4,15 @@
 
 ![thumbnail](/output/group10.png)
 
-## Nearby Travel Destinations for New Yorkers during COVID-19
+## [Nearby Travel Destinations for New Yorkers during COVID-19](https://mubai.shinyapps.io/covid/)
 Term: Fall 2020
+[Shiny app Link](https://mubai.shinyapps.io/covid/)
 
 + **Team #10**
 	+ Charles Shin
 	+ Xinyi Zhang
 	+ Wei Yin
-	+ Mubai 
+	+ Mubai (ml4407@columbia.edu)
 	+ LJ Zhang
 
 + **Project summary**: The ability to travel in the United States during the year 2020 has been impacted significantly due to the COVID-19 outbreak. As the country recently experienced grim milestones of almost 8 million confirmed cases and over 200,000 deaths, many people share the conflict in interest between the urge to travel after months of social isolation and the desire to prevent exposure to the coronavirus. This sentiment is perhaps most sharply felt in New York City, a place that initially was one of the global hotspots of the pandemic before cases started to recede due to effective social distancing policies. Such policies were instrumental in curbing the climbing rates of COVID-19, but at the same time ensured that millions of residents work from home and restrict time outdoors to the bare minumum. As schools and universities gradually reopen, and with the holiday seasons right around the corner, this conflict of interest threatens to only exacerbate.
@@ -20,7 +21,19 @@ Term: Fall 2020
 
 + **Data source**: All COVID-19 data was extracted from this source: [JHU CSSE Covid-19 Data](https://github.com/CSSEGISandData/COVID-19)
 
-+ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) All team members contributed equally in all stages of this project. All team members approve our work presented in this GitHub repository including this contributions statement. 
++ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
+
+Mubai Liu built all features/functions in Choropleths page, organized github files and deployed the application;
+
+Charles Shin build the Home page, noted during group meetings, rephrasing text materials, and collected data on states' attractions;
+
+Wen Yin collected data on states' attractions, researched different states quarantine policies, built the State Quarantine Policy page, and developed the final presentation materials( design the PPT and write down the content to be presented in class).
+
+Lingjia Zhang combine the covid datasets, developed the Overview page and helped the deployment;
+
+Xinyi Zhang established the structure of the shiny app, combine and updated the covid datasets, developed the Find Your Destination page, and helped wrapping up the app (adding texts and images).
+
+All team members contributed during the brainstorming of the project topic and cleaning the datasets. All team members approve our work presented in our GitHub repository including this contribution statement.
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
