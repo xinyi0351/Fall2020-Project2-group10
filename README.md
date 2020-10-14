@@ -23,9 +23,9 @@ Term: Fall 2020
 
 + **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
 
-Mubai Liu built all features/functions in Choropleths page, organized github files and deployed the application;
+Mubai Liu built all features/functions in Choropleths page, organized github files and deployed the application, wrote materials beside introduction on this readme file;
 
-Charles Shin build the Home page, noted during group meetings, rephrasing text materials, and collected data on states' attractions;
+Charles Shin build the Home page, noted during group meetings, wrote the introcution/summary on this readme file, rephrasing text materials, and collected data on states' attractions;
 
 Wen Yin collected data on states' attractions, researched different states quarantine policies, built the State Quarantine Policy page, and developed the final presentation materials( design the PPT and write down the content to be presented in class).
 
