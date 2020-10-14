@@ -5,8 +5,8 @@ account: mubai
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2985671
-bundleId: 3736933
+bundleId: 3736975
 url: https://mubai.shinyapps.io/covid/
-when: 1602632052.20228
+when: 1602633309.30972
 asMultiple: FALSE
 asStatic: FALSE
