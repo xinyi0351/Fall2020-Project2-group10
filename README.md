@@ -21,7 +21,7 @@ Term: Fall 2020
 
 + **Data source**: All COVID-19 data was extracted from this source: [JHU CSSE Covid-19 Data](https://github.com/CSSEGISandData/COVID-19)
 
-+ **Contribution statement**: ([default](doc/a_note_on_contributions.md)) 
++ **Contribution statement**: ([Detailed](doc/a_note_on_contributions.md)) 
 
 Mubai Liu built all features/functions in Choropleths page, organized github files and deployed the application, wrote materials beside introduction on this readme file;
 
