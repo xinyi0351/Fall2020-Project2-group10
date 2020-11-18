@@ -12,7 +12,7 @@ Term: Fall 2020
 	+ Charles Shin
 	+ Xinyi Zhang
 	+ Wei Yin
-	+ Mubai (ml4407@columbia.edu)
+	+ Mubai
 	+ LJ Zhang
 
 + **Project summary**: The ability to travel in the United States during the year 2020 has been impacted significantly due to the COVID-19 outbreak. As the country recently experienced grim milestones of almost 8 million confirmed cases and over 200,000 deaths, many people share the conflict in interest between the urge to travel after months of social isolation and the desire to prevent exposure to the coronavirus. This sentiment is perhaps most sharply felt in New York City, a place that initially was one of the global hotspots of the pandemic before cases started to recede due to effective social distancing policies. Such policies were instrumental in curbing the climbing rates of COVID-19, but at the same time ensured that millions of residents work from home and restrict time outdoors to the bare minumum. As schools and universities gradually reopen, and with the holiday seasons right around the corner, this conflict of interest threatens to only exacerbate.
